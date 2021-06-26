@@ -16,8 +16,8 @@ public class CreateUsersSteps {
   private String userName;
   private String jobName;
 
-  @Given("I create an new user")
-  public void iCreateANewUser() {
+  @Given("I create a new user")
+  public void iCreateNewUser() {
     newUser = new HashMap<>();
   }
 
