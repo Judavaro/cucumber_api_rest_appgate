@@ -1,6 +1,7 @@
 package steps;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -11,14 +12,12 @@ import java.util.HashMap;
 
 public class CreateUsersSteps {
 
-  private String url;
   private HashMap<String, String> newUser;
   private String userName;
   private String jobName;
 
-  @Given("I create a new user with this api services {string}")
-  public void iCreateANewUserWithThisApiServices(String urlParam) {
-    url = urlParam;
+  @Given("I create an new user")
+  public void iCreateANewUser() {
     newUser = new HashMap<>();
   }
 
@@ -39,13 +38,16 @@ public class CreateUsersSteps {
     newUser.put("job", jobName);
 
     given()
-        .contentType(ContentType.JSON)
-        .with()
+      .baseUri("https://reqres.in/")
+      .contentType(ContentType.JSON)
+      .with()
         .body(newUser)
-        .when()
-        .post(url)
-        .then()
-        .assertThat()
-        .statusCode(201);
+    .when()
+      .post("api/users")
+    .then()
+      .assertThat()
+      .statusCode(201)
+      .statusLine("HTTP/1.1 201 Created")
+      .body("name", equalTo(userName));
   }
 }
