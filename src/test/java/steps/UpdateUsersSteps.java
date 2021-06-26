@@ -16,8 +16,8 @@ public class UpdateUsersSteps {
   private String userName;
   private String jobName;
 
-  @Given("I update an user with this api services {string}")
-  public void iUpdateAnUserWithThisApiServices(String urlParam) {
+  @Given("I update an user")
+  public void iUpdateAnUser() {
     newUser = new HashMap<>();
   }
 
