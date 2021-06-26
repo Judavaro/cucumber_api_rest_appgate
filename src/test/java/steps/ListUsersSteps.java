@@ -15,11 +15,11 @@ public class ListUsersSteps {
   public void iWantToValidateThatTheUserListIsListedCorrectly() {
     
     given()
-        .baseUri("https://reqres.in/")
-        .contentType(ContentType.JSON)
-        .when()
-        .get("api/users")
-        .then()
+      .baseUri("https://reqres.in/")
+      .contentType(ContentType.JSON)
+      .when()
+      .get("api/users")
+      .then()
         .assertThat()
         .statusCode(200)
         .statusLine("HTTP/1.1 200 OK");
