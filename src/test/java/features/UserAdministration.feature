@@ -24,6 +24,7 @@ Feature: User Administration with cucumber and api-rest
       | Carla         | mina       | @.           | https://reqres.in/img/faces/7-image.jpg           |
 
     Then I want to know if the email send has correctly format
+      And I want to validate if this user is created correctly
 
 
 
