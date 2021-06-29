@@ -1,55 +1,45 @@
 package steps;
 
-import static io.restassured.RestAssured.given;
-
-
-import io.cucumber.java.en.And;
+import Util.Utilities;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.http.ContentType;
-import java.util.HashMap;
+import java.util.List;
+import model.User;
 
-public class CreateUserNumericNameSteps {
+public class CreateUserNumericNameSteps extends User{
+  private String first_name;
+  private String last_name;
+  private String email;
+  private String avatar;
 
-  private HashMap<String, String> newUser;
-  private String userName;
-  private String jobName;
+  private List<List<String>> emailList;
 
-  @Given("I search the user with the numeric name")
-  public void iSearchTheUserWithTheNumericName() {
-    newUser = new HashMap<>();
+  @Given("I create a new use with many emails")
+  public void iCreateANewUseWithManyEmails() {
   }
 
-  @When("I send the name {string}")
-  public void iSendTheName(String name) {
-    userName = name;
+  @When("I send the name <email>")
+  public void iSendTheNameEmail(DataTable emails) {
+    emailList = emails.asLists(String.class);
   }
 
-  @And("I his job is {string}")
-  public void iHisJobIs(String job) {
-    jobName = job;
-  }
+  @Then("I want to know if the email send has correctly format")
+  public void iWantToKnowIfTheEmailSendHasCorrectlyFormat() {
 
-  @Then("I want to know if the system does not create the user with numeric name")
-  public void iWantToKnowIfTheSystemDoesNotCreateTheUserWithNumericName() {
-
-    newUser.put("name", userName);
+    /*newUser.put("name", userName);
     newUser.put("job", jobName);
 
-    if(Utilities.isNumeric(userName)) {
+    //if(Utilities.isNumeric(userName)) {
 
-      String response = given()
-          .baseUri("https://reqres.in/")
-          .contentType(ContentType.JSON)
-          .with()
-          .body(newUser)
-          .when()
-          .post("api/users").asString();
+      //= new User(first_name, last_name, email, avatar);
 
-        .assertThat()
+
+
+      /*Utilities.createUser(newUser).assertThat()
           .statusCode(400)
-          .statusLine("HTTP/1.1 400 Bad Request");
+          .statusLine("HTTP/1.1 400 Bad Request");*/
 
     }
   }
