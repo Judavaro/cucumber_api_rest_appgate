@@ -46,5 +46,9 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.cucumber:cucumber-testng:6.10.4" level="project" />
+    <orderEntry type="library" name="Maven: org.testng:testng:7.4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.beust:jcommander:1.78" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:jquery:3.5.1" level="project" />
   </component>
 </module>
