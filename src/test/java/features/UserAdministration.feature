@@ -10,24 +10,26 @@ Feature: User Administration with cucumber and api-rest
       | Juan          | Vanegas            | juanvanegas.automator.@gmail.com | https://reqres.in/img/faces/7-image.jpg |
 
   Scenario:  Validate that user email has valid format ex: username@domainname.xxx
+    and the test should fail
     Given I create a new user with many emails
     When I send the <email>
 
-      | first_name    | last_name  | email          | avatar                                            |
-      | Juan          | Vanegas    | @gmail.com     | https://reqres.in/img/faces/7-image.jpg           |
-      | Carlos        | Martinez   | juan@          | https://reqres.in/img/faces/7-image.jpg           |
-      | Camila        | Guzman     | juan@.com      | https://reqres.in/img/faces/7-image.jpg           |
-      | Alejandro     | Almiro     | juan@com       | https://reqres.in/img/faces/7-image.jpg           |
-      | Ramiro        | Soto       | juan           | https://reqres.in/img/faces/7-image.jpg           |
-      | Alonso        | Arango     | juan@gmail     | https://reqres.in/img/faces/7-image.jpg           |
-      | Bety          | Munera     | juan@gmail.    | https://reqres.in/img/faces/7-image.jpg           |
-      | Carla         | mina       | @.             | https://reqres.in/img/faces/7-image.jpg           |
-      | Carla         | mina       | juan@gmail.com | https://reqres.in/img/faces/7-image.jpg           |
+      | email                |
+      | carlina@gmail.com    |
+      | @gmail.com           |
+      | juan@                |
+      | juan@.com            |
+      | juan@com             |
+      | xiomi@gmail.com      |
+      | juan                 |
+      | juan@gmail           |
+      | juan@gmail.          |
+      | @.                   |
 
     Then I want to know if the email send has correctly format
       And I want to validate if this user is created correctly
 
 
 
-# validar que el correo del usuario sea valido formato
+
 # validar que el usuario a registrar no exista
