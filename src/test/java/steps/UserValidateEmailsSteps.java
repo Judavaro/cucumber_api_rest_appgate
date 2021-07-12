@@ -11,30 +11,26 @@ import model.User;
 
 public class UserValidateEmailsSteps extends User {
 
-  private DataTable userDataTable;
+  private DataTable emailDT;
+  private String emailToEvaluate;
 
   @Given("I create a new user with many emails")
   public void iCreateANewUserWithManyEmails() {
   }
 
-  @When("I send the <email>")
-  public void iSendTheEmail() {
+  @When("I send the {string}")
+  public void i_send_the(String email) {
+    emailToEvaluate =  email;
   }
-  //@When("I send the <email>")
-  //public void iSendTheEmail(DataTable users) {
-   // userDataTable = users;
-  //}
 
   @Then("I want to know if the email send has correctly format")
   public void iWantToKnowIfTheEmailSendHasCorrectlyFormat() {
+    System.out.println(">>> "+User.validateEmail(emailToEvaluate));
+    assertTrue(User.validateEmail(emailToEvaluate),"The email < "+emailToEvaluate+" > has an invalid format. Error: ");
+    ///List<List<String>> rows = emailDT.asLists(String.class);
 
-    List<List<String>> rows = userDataTable.asLists(String.class);
-
-    for (List<String> columns : rows) {
-      assertTrue(User.validateEmail(columns.get(0)),"The email has an invalid format. Error: ");
-    }
+    //for (List<String> columns : rows) {
+      //assertTrue(User.validateEmail(columns.get(0)),"The email < "+columns.get(0)+" > has an invalid format. Error: ");
+    //}
   }
-
-
-
 }
