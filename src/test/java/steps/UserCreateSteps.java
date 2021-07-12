@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
 import model.User;
 
-public class UserCreateCorrectlySteps {
+public class UserCreateSteps {
 
   private User newUser;
 
@@ -32,15 +32,14 @@ public class UserCreateCorrectlySteps {
 
     given()
         .baseUri("https://reqres.in/")
+        .basePath("api/users")
         .contentType(ContentType.JSON)
-        .with()
         .body(newUser)
-        .when()
-        .post("api/users")
+        .post()
         .then()
-        .assertThat()
         .statusCode(201)
         .statusLine("HTTP/1.1 201 Created")
-        .body("name", equalTo(newUser.first_name));
+        .assertThat()
+        .body("first_name", equalTo(newUser.first_name));
   }
 }

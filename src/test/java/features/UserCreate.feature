@@ -1,4 +1,4 @@
-Feature: User Administration with cucumber and api-rest
+Feature: User Created with cucumber and api-rest
 
   Scenario: Validate that an user is created correctly, happy path
     Given I create a new user
@@ -10,6 +10,7 @@ Feature: User Administration with cucumber and api-rest
     When I send the <email>
     Then I want to know if the email send has correctly format
     And I want to validate if this user is created correctly
+
     Examples:
       | email |
       | carlina@gmail.com |
