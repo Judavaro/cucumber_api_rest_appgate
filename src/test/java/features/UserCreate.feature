@@ -22,8 +22,10 @@ Feature: User Created with cucumber and api-rest
       | "xxxx"     | "xxxx"    | "juan@gmail"            | "xxxx" |
       | "xxxx"     | "xxxx"    | "juan@gmail."           | "xxxx" |
       | "xxxx"     | "xxxx"    | "@."                    | "xxxx" |
-      | "Juan"     | "Vanegas" | "juanvanegas@gmail.com" | "@."   |
+      | "Juan"     | "Vanegas" | "juanvanegas@gmail.com" | "xxxx" |
 
-    # validar que el usuario a registrar no exista
-  Scenario: Validate the user is not created
-    Given I create
+  Scenario: Validate that an user doesn't exist before to be created
+    Given I create a new user
+    When I send the first name: "Janet", the last name: "Weaver", the email: "janet.weaver@reqres.in" and his avatar is: "https://reqres.in/img/faces/2-image.jpg"
+    Then I want to check if the user "Janet" exist in the Api server
+    And I want to validate if this user is created correctly

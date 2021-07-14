@@ -1,5 +1,9 @@
 package model;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import io.restassured.http.ContentType;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +15,8 @@ public class User {
   public String email;
   public String avatar;
 
-  private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+  private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern
+      .compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
   /*public void User(first_name, last_name, email, avatar){
     this.first_name = first_name;
