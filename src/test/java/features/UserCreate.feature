@@ -1,28 +1,29 @@
 Feature: User Created with cucumber and api-rest
 
-  #Happy Path
+  #Happy Path with entry parameters
   Scenario: Validate that an user is created correctly
     Given I create a new user
-    When I send the "Juan", the "Vanegas", the "juanvanegas.automation@gmail.com" and his "www.google.com"
+    When I send the first name: "Juan", the last name: "Vanegas", the email: "juanvanegas.automation@gmail.com" and his avatar is: "https://reqres.in/img/faces/2-image.jpg"
     Then I want to validate if this user is created correctly
 
     #Using Scenario Outline
   Scenario Outline: Validate that user email has valid format ex: username@domainname.xxx
-    Given I create a new user with many emails
-    When I send the <email>
-    Then I want to know if the email send has correctly format
+    Given I create a new user
+    When I send the first name: <first_name>, the last name: <last_name>, the email: <email> and his avatar is: <avatar>
+    Then I want to know if the <email> send has correctly format
     And I want to validate if this user is created correctly
     Examples:
-      | email             |
-      | "@gmail.com"      |
-      | "juan@"           |
-      | "juan@.com"       |
-      | "juan@com"        |
-      | "xiomi@gmail.com" |
-      | "juan"            |
-      | "juan@gmail"      |
-      | "juan@gmail."     |
-      | "@."              |
+      | first_name | last_name | email                   | avatar |
+      | "xxxx"     | "xxxx"    | "@gmail.com"            | "xxxx" |
+      | "xxxx"     | "xxxx"    | "juan@"                 | "xxxx" |
+      | "xxxx"     | "xxxx"    | "juan@.com"             | "xxxx" |
+      | "xxxx"     | "xxxx"    | "juan@com"              | "xxxx" |
+      | "xxxx"     | "xxxx"    | "juan"                  | "xxxx" |
+      | "xxxx"     | "xxxx"    | "juan@gmail"            | "xxxx" |
+      | "xxxx"     | "xxxx"    | "juan@gmail."           | "xxxx" |
+      | "xxxx"     | "xxxx"    | "@."                    | "xxxx" |
+      | "Juan"     | "Vanegas" | "juanvanegas@gmail.com" | "@."   |
 
     # validar que el usuario a registrar no exista
-  Scenario: Validate the user before to craet
+  Scenario: Validate the user is not created
+    Given I create

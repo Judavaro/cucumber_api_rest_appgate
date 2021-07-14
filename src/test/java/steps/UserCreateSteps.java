@@ -18,8 +18,9 @@ public class UserCreateSteps {
     newUser = new User();
   }
 
-  @When("I send the {string}, the {string}, the {string} and his {string}")
-  public void iSendTheTheTheAndHis(String first_name, String last_name, String email, String avatar) {
+  @When("I send the first name: {string}, the last name: {string}, the email: {string} and his avatar is: {string}")
+  public void iSendTheFirstNameTheLastNameTheEmailAndHisAvatarIs(String first_name, String last_name,
+      String email, String avatar) {
 
     newUser.setFirst_name(first_name);
     newUser.setLast_name(last_name);
